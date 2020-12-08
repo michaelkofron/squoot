@@ -6,7 +6,9 @@ import Input from './input.js'
 function Header() {
     return (
     <div className="header">
-      <img alt="squoot logo" src={logo} />
+      <div className="header__logobox">
+        <img alt="squoot logo" src={logo} />
+      </div>
       <Input /> 
       <a className="coffee" target="_blank" rel="noreferrer" href="https://www.buymeacoffee.com/michaelkofron"><img alt="buy me a coffee" src={coffee}/></a>
     </div>

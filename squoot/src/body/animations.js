@@ -86,7 +86,8 @@ let mobile = (thisReplace) => {
 }
 
 let desktop = (thisReplace) => {
-    thisReplace.setState({width: window.innerWidth, height: 1080})
+    widthChange(thisReplace, 1920)
+    heightChange(thisReplace, 1080)
 }
 
 export {

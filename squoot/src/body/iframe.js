@@ -29,10 +29,10 @@ export default class Iframe extends React.Component {
 
         //let element = document.getElementsByClassName("frame")[0]
 
-        if (result === "mobile"){
+        if (result.includes("mobile")){
             //this.animate()
             mobile(this)
-        } else if (result === "desktop"){
+        } else if (result.includes("desktop")){
             desktop(this)
         }
     }
@@ -81,7 +81,7 @@ export default class Iframe extends React.Component {
     render () {
         return (
             <div>
-                <p>{this.state.width} x {this.state.height}</p>
+                <p>{this.state.width}px x {this.state.height}px</p>
                 <iframe className="frame" title="iframe" width={`${this.state.width}px`} height={`${this.state.height}px`} src={this.state.src} />
             </div>
         
