@@ -1,19 +1,14 @@
 let highestDivisible = (number) => {
     let highest
-
     for (let i = 1; i <= 50; i++){
         if (number % i === 0){
             highest = i
         }
     }
-
     return highest
 }
 
 let widthChange = (context, desiredWidth) => {
-
-    console.log(context.state.width)
-    console.log(desiredWidth)
     if (context.state.width > desiredWidth){
         console.log("less")
         let difference = desiredWidth - context.state.width
@@ -66,31 +61,15 @@ let heightChange = (context, desiredHeight) => {
     }
 }  
 
-let mobile = (thisReplace) => {
-
-    /*
-    let interval = setInterval(() => {
-        if (thisReplace.state.width > 360){
-            thisReplace.setState({width: thisReplace.state.width - 10})
-        } else {
-            clearInterval(interval)
-        }
-        
-    }, 10) */
-
-    widthChange(thisReplace, 360)
-    heightChange(thisReplace, 620)
-    
-
-    //thisReplace.setState({width: 360, height: 620})
+let horizontal = (thisReplace, width) => {
+    widthChange(thisReplace, width)
 }
 
-let desktop = (thisReplace) => {
-    widthChange(thisReplace, 1920)
-    heightChange(thisReplace, 1080)
+let vertical = (thisReplace, height) => {
+    heightChange(thisReplace, height)
 }
-
+//
 export {
-    mobile,
-    desktop
+    horizontal,
+    vertical
 }

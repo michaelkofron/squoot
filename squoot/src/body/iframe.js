@@ -1,6 +1,6 @@
 import React from "react"
 
-import {mobile, desktop} from './animations.js'
+import {horizontal, vertical} from './animations.js'
 
 export default class Iframe extends React.Component {
     state = {
@@ -29,11 +29,24 @@ export default class Iframe extends React.Component {
 
         //let element = document.getElementsByClassName("frame")[0]
 
-        if (result.includes("mobile")){
+        if (result.includes("horizontal")){
             //this.animate()
-            mobile(this)
-        } else if (result.includes("desktop")){
-            desktop(this)
+            let array = result.split(" ")
+            let size = parseInt(array[array.indexOf("horizontal") + 1])
+            if (!isNaN(size)){
+                horizontal(this, size)
+            } else {
+                horizontal(this, this.state.height)
+            }
+        } else if (result.includes("vertical")){
+            let array = result.split(" ")
+            let size = parseInt(array[array.indexOf("vertical") + 1])
+
+            if (!isNaN(size)){
+                vertical(this, size)
+            } else {
+                vertical(this, this.state.height)
+            }
         }
     }
 
