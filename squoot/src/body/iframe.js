@@ -7,6 +7,14 @@ export default class Iframe extends React.Component {
         width: 800,
         height: 800,
         src: "https://www.thesafebrowser.com?r=poidsas", 
+        message: "Welcome! Please read the guide."
+    }
+
+    changeMessage = (message) => {
+        this.setState({message: message})
+        setInterval(() => {
+            this.setState({message: ""})
+        }, 5000)
     }
 
     getRandom = () => {
@@ -35,6 +43,7 @@ export default class Iframe extends React.Component {
             let size = parseInt(array[array.indexOf("horizontal") + 1])
             if (!isNaN(size)){
                 horizontal(this, size)
+                this.changeMessage("horizontal change")
             } else {
                 horizontal(this, this.state.height)
             }
@@ -44,9 +53,12 @@ export default class Iframe extends React.Component {
 
             if (!isNaN(size)){
                 vertical(this, size)
+                this.changeMessage("vertical change")
             } else {
                 vertical(this, this.state.height)
             }
+        } else if (result.includes("refresh")){
+            this.setState({src: this.state.src.split("?")[0] + this.getRandom()})
         }
     }
 
@@ -94,6 +106,7 @@ export default class Iframe extends React.Component {
     render () {
         return (
             <div>
+                <p>{this.state.message}</p>
                 <p>{this.state.width}px x {this.state.height}px</p>
                 <iframe className="frame" title="iframe" width={`${this.state.width}px`} height={`${this.state.height}px`} src={this.state.src} />
             </div>
